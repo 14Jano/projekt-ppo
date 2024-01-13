@@ -97,9 +97,13 @@ public class Story {
     public static void printEnd (Player player) {
         GameSense.clearConsole();
         GameSense.printSeparator(1);
-        System.out.println("Gratulacje, " + player.name + "! Pokonałeś Złego Cesarza i uratowałeś świat!");
+        if (player.hp > 0) {
+            System.out.println("Gratulacje, " + player.name + "! Pokonałeś Złego Cesarza i uratowałeś świat!");
+        } else {
+            System.out.println("Niestety, " + player.name + "! Przegrałeś ze Złym Cesarzem i świat pogrążył się w chaosie!");
+        }
         GameSense.printSeparator(1);
-        System.out.println("Ta gra została zaprojektowana przez Dominika Kamińskiego i Jana Łabaj ");
-        System.out.println("Mam nadzieję, że ci się podobało!");
+        System.out.println("Ta gra została zaprojektowana przez Dominika Kamińskiego i Jana Łabaj.");
+        System.out.println("Mamy nadzieję, że ci się podobało!");
     }
 }

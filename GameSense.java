@@ -9,7 +9,7 @@ public class GameSense {
 
     public static String[] encounters = {"Walka", "Walka", "Walka", "Odpoczynek", "Odpoczynek"};
 
-    public static String[] enemies = {"Ogr", "Ogr", "Goblin", "Goblin", "Żywiołak"};
+    public static String[] enemies = {"Ogr", "Troll", "Goblin", "Kościotrup", "Żywiołak"};
 
     public static int place = 0, act = 1;
     public static String[] places = {"Góry Wiecznego Zapomnienia", "Nawiedzony Cmentarz", "Zamek Cesarza Zła", "Sala Tronowa"};
@@ -40,9 +40,9 @@ public class GameSense {
 
     }
     public static void printHeading(String title){
-        printSeparator(1);
+        printSeparator(1);;
         System.out.println(title);
-        printSeparator(1);
+        printSeparator(1);;
     }
     public static void anythingToContinue(){
         System.out.println("\nWciśnij dowolny przycisk aby kontynuować...");
@@ -54,10 +54,10 @@ public class GameSense {
         String name;
 
         clearConsole();
-        printSeparator(1);
+        printSeparator(1);;
         System.out.println("Najlepsza gra wszechczasów!!!");
         System.out.println("Jano & Domin");
-        printSeparator(1);
+        printSeparator(1);;
         anythingToContinue();
 
         do{
@@ -94,7 +94,7 @@ public class GameSense {
             enemies[0] = "Najemnik Złego Cesarza";
             enemies[1] = "Goblin";
             enemies[2] = "Stado Wilków";
-            enemies[3] = "Pomocnik Złego Imperatora";
+            enemies[3] = "Pomocnik Złego Cesarza";
             enemies[4] = "Ogr";
 
             encounters[0] = "Walka";
@@ -109,11 +109,11 @@ public class GameSense {
             Story.printSecondActOutro();
             player.chooseTrait();
             Story.printThirdActIntro();
-            enemies[0] = "Najemnik Złego Cesarza";
+            enemies[0] = "Pies Złego Cesarza";
             enemies[1] = "Najemnik Złego Cesarza";
-            enemies[2] = "Pomocnik Złego Imperatora";
-            enemies[3] = "Pomocnik Złego Imperatora";
-            enemies[4] = "Pomocnik Złego Imperatora";
+            enemies[2] = "Czarodziej Złego Cesarza";
+            enemies[3] = "Pomocnik Złego Cesarza";
+            enemies[4] = "Miecznik Złego Cesarza";
 
             encounters[0] = "Walka";
             encounters[1] = "Walka";
@@ -156,16 +156,16 @@ public class GameSense {
         clearConsole();
         printHeading("INFORMACJE O BOHATERZE");
         System.out.println(player.name + "\tHP: " + player.hp + "/" + player.maxHp);
-        printSeparator(1);
+        printSeparator(1);;
         System.out.println("XP: " + player.xp + "\tZłoto: " + player.gold);
-        printSeparator(1);
+        printSeparator(1);;
         System.out.println("# Mikstur: " + player.pots);
-        printSeparator(1);
+        printSeparator(1);;
 
 
         if(player.numAtkUpgrades > 0) {
             System.out.println("Cecha ofensywna: " + player.atkUpgrades[player.numAtkUpgrades - 1]);
-            printSeparator(1);
+            printSeparator(1);;
         }
         if(player.numDefUpgrades > 0) {
             System.out.println("Cecha defensywna: " + player.defUpgrades[player.numDefUpgrades - 1]);
@@ -179,7 +179,7 @@ public class GameSense {
         printHeading("Spotykasz tajemniczego nieznajomego.\nTajemniczy nieznajomy oferuje Ci:");
         int price = (int) (Math.random()* (10 + player.pots*3) + 10 + player.pots);
         System.out.println("- Magiczną Miksturę : " + price + " Złota.");
-        printSeparator(1);
+        printSeparator(20);
         System.out.println("Czy chcesz kupić?\n(1) Tak!\n(2) Nie, dzięki.");
         int input = readInt("-> ", 2);
         if(input == 1){
@@ -221,7 +221,7 @@ public class GameSense {
 
     public static void randomBattle(){
         clearConsole();
-        printHeading("Napotkałeś potwora. Musisz z nim walczyć!");
+        printHeading("Napotkałeś przeciwnika. Musisz z nim walczyć!");
         anythingToContinue();
 
         battle(new Enemy(enemies[(int)(Math.random()*enemies.length)], player.xp));
@@ -233,7 +233,7 @@ public class GameSense {
             printHeading(enemy.name + "\nHP: " + enemy.hp + "/" + enemy.maxHp);
             printHeading(player.name + "\nHP: " + player.hp + "/" + player.maxHp);
             System.out.println("Wybierz akcję: ");
-            printSeparator(1);
+            printSeparator(3);
             System.out.println("(1) Walcz\n(2) Użyj Mikstury\n(3) Uciekaj");
             int input = readInt("-> ", 3);
 
@@ -253,16 +253,16 @@ public class GameSense {
 
                 clearConsole();
                 printHeading("WALKA");
-                System.out.println("Zadajesz " + dmg + " obrażen przeciwnikowi " + enemy.name + ".");
-                printSeparator(1);
-                System.out.println("Przeciwnik " + enemy.name + " zadał Ci " + dmgTook + " obrażeń.");
+                System.out.println("Zadajesz " + dmg + " obrażen przeciwnikowi - " + enemy.name + ".");
+                printSeparator(3);
+                System.out.println("Przeciwnik - " + enemy.name + " - zadał Ci " + dmgTook + " obrażeń.");
                 anythingToContinue();
                 if(player.hp <= 0) {
                     playerDied();
                     break;
                 }else if(enemy.hp <= 0) {
                     clearConsole();
-                    printHeading("Pokonałeś " + enemy.name + "!");
+                    printHeading("Pokonałeś - " + enemy.name + "!");
 
                     player.xp += enemy.xp;
                     System.out.println("Zdobyłeś " + enemy.xp + " XP!");
@@ -275,7 +275,7 @@ public class GameSense {
                     }
                     if(goldEarned > 0){
                         player.gold += goldEarned;
-                        System.out.println("Zebrałeś " + goldEarned + " złota ze zwłok " + enemy.name + "!");
+                        System.out.println("Zebrałeś " + goldEarned + " złota ze zwłok - " + enemy.name + "!");
 
                     }
                     anythingToContinue();
@@ -286,7 +286,7 @@ public class GameSense {
                 clearConsole();
                 if(player.pots > 0 && player.hp < player.maxHp){
                     //use potion
-                    printHeading("Czy chcesz się napić mikstury? (Zostało" + player.pots + " mikstur).");
+                    printHeading("Czy chcesz się napić mikstury? (Zostało Ci" + player.pots + " mikstur).");
                     System.out.println("(1) Tak\n(2) Nie, może później");
                     input = readInt("-> ", 2);
                     if(input == 1){
@@ -304,14 +304,14 @@ public class GameSense {
 
                 if(act != 4){
                     if(Math.random()*10 + 1 <= 3.5){
-                        printHeading("Uciekłes przed " + enemy.name + "!");
+                        printHeading("Uciekłes przed - " + enemy.name + "!");
                         anythingToContinue();
                         break;
                     }else{
                         printHeading("Nie udało Ci się uciec.");
 
                         int dmgTook = enemy.attack();
-                        System.out.println("W pośpiechu otrzymałeś " + dmgTook + " obrażeń!");
+                        System.out.println("Podczas nieudanej ucieczki otrzymałeś " + dmgTook + " obrażeń!");
                         anythingToContinue();
 
                         if(player.hp <= 0)
@@ -330,7 +330,7 @@ public class GameSense {
         clearConsole();
         printHeading(places[place]);
         System.out.println("Wybierz opcje:");
-        printSeparator(1);
+        printSeparator(1);;
         System.out.println("(1) Kontynuuj przygodę");
         System.out.println("(2) Informacje o bohaterze");
         System.out.println("(3) Wyłącz grę");
@@ -345,7 +345,7 @@ public class GameSense {
 
     public static void playerDied(){
         clearConsole();
-        printHeading("Zginełeś...");
+        printHeading("Zginąłeś...");
         printHeading("Zdobyłeś " + player.xp + " XP podczas podróży. Postaraj się zdobyć więcej następnym razem!");
         System.out.println("Dzięki za grę!");
         isRunning = false;
