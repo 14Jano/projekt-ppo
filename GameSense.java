@@ -286,7 +286,11 @@ public class GameSense {
                 clearConsole();
                 if(player.pots > 0 && player.hp < player.maxHp){
                     //use potion
+<<<<<<< HEAD
                     printHeading("Czy chcesz się napić mikstury? (Zostało Ci" + player.pots + " mikstur).");
+=======
+                    printHeading("Czy chcesz się napić mikstury? (Zostało " + player.pots + " mikstur).");
+>>>>>>> 99f95c697404584cfe8656ab8e242374b9b884df
                     System.out.println("(1) Tak\n(2) Nie, może później");
                     input = readInt("-> ", 2);
                     if(input == 1){
